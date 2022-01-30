@@ -1,0 +1,11 @@
+.center {
+    max-width: 500px;
+    margin: auto;
+    background: white;
+    padding: 10px;
+  }
+  .background {
+    background-color: #F4F6F7;
+    padding: 40px;
+    border-radius: 16px;
+  }
