@@ -6,12 +6,14 @@ import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import SearchIcon from "@mui/icons-material/Search";
 import { Grid } from "@mui/material";
+
 const InputName = () => {
   const [inputVal, setInputVal] = useState("");
   const [name, setName] = useState("");
   const [gender, setGender] = useState("");
   const [age, setAge] = useState("");
   const [nationality, setNationality] = useState([]);
+
   const GetGender = () => {
     axios.get(`https://api.genderize.io?name=${inputVal}`).then((r) => {
       console.log(r.data);
@@ -75,27 +77,33 @@ const InputName = () => {
           <div>Age:{age}</div>
           <div>Gender:{gender}</div>
           <div>
-            Country :
-            <br></br>
-            <table style={{textAlign:'center'}}>
+            Country :<br></br>
+            <table style={{ textAlign: "center" }}>
               <tr>
                 <td>Code</td>
                 <td>Flag</td>
               </tr>
-              {nationality.map((obj,i)=>{
-              return <>
-              <tr>
-                <td>{obj.country_id}</td>
-                <td>{obj.country_id?<>
-                  <img src={`https://flagcdn.com/16x12/${obj.country_id.toLowerCase()}.png`} alt="flag"/>
-                </>:null}</td>
-              </tr>
-              </>
-            })}
-              
+              {nationality.map((obj, i) => {
+                return (
+                  <>
+                    <tr>
+                      <td>{obj.country_id}</td>
+                      <td>
+                        {obj.country_id ? (
+                          <>
+                            <img
+                              src={`https://flagcdn.com/16x12/${obj.country_id.toLowerCase()}.png`}
+                              alt="flag"
+                            />
+                          </>
+                        ) : null}
+                      </td>
+                    </tr>
+                  </>
+                );
+              })}
             </table>
           </div>
-         
         </Grid>
       </Grid>
     </>
