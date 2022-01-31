@@ -48,14 +48,16 @@ const InputName = () => {
         className="center background"
         component={motion.div}
       >
-        <Grid xs={12}>
+        <Grid xs={12} className="heading-container"><div className="heading" >GetInfo</div></Grid>
+        <Grid xs={12} className="align-textfield">
+          <label style={{marginRight:'20px'}} >Name&nbsp;:</label>
           <TextField
             onChange={(e) => {
               setInputVal(e.target.value);
             }}
-            id="outlined-basic"
-            label="Name"
-            variant="outlined"
+            id="standard-basic"
+            placeholder="Search name"
+            variant="standard"
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
@@ -72,7 +74,7 @@ const InputName = () => {
             }}
           />
         </Grid>
-        <Grid xs={12} className="xxxx">
+        {/* <Grid xs={12} className="xxxx">
           <div>Name: {name}</div>
           <div>Age:{age}</div>
           <div>Gender:{gender}</div>
@@ -104,7 +106,7 @@ const InputName = () => {
               })}
             </table>
           </div>
-        </Grid>
+        </Grid> */}
       </Grid>
     </>
   );
