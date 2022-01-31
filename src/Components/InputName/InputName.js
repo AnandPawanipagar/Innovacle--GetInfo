@@ -45,15 +45,25 @@ const InputName = () => {
         }}
         container
         mt={5}
-        className="center background"
+        className="center background main-container"
         component={motion.div}
       >
-        <Grid xs={12} className="heading-container"><div className="heading" >GetInfo</div></Grid>
+        <Grid xs={12} className="heading-container">
+          <div className="heading">GetInfo</div>
+        </Grid>
         <Grid xs={12} className="align-textfield">
-          <label style={{marginRight:'20px'}} >Name&nbsp;:</label>
+          <label style={{ marginRight: "20px" }}>Name&nbsp;:</label>
           <TextField
             onChange={(e) => {
               setInputVal(e.target.value);
+            }}
+            onKeyPress={(e) => {
+              if (e.key === "Enter") {
+                GetGender();
+                GetAge();
+                GetNationality();
+                setName(inputVal);
+              }
             }}
             id="standard-basic"
             placeholder="Search name"
@@ -74,39 +84,35 @@ const InputName = () => {
             }}
           />
         </Grid>
-        {/* <Grid xs={12} className="xxxx">
-          <div>Name: {name}</div>
-          <div>Age:{age}</div>
-          <div>Gender:{gender}</div>
-          <div>
-            Country :<br></br>
-            <table style={{ textAlign: "center" }}>
-              <tr>
-                <td>Code</td>
-                <td>Flag</td>
-              </tr>
-              {nationality.map((obj, i) => {
-                return (
-                  <>
-                    <tr>
-                      <td>{obj.country_id}</td>
-                      <td>
-                        {obj.country_id ? (
-                          <>
-                            <img
-                              src={`https://flagcdn.com/16x12/${obj.country_id.toLowerCase()}.png`}
-                              alt="flag"
-                            />
-                          </>
-                        ) : null}
-                      </td>
-                    </tr>
-                  </>
-                );
-              })}
-            </table>
-          </div>
-        </Grid> */}
+        <Grid xs={12} className="table-container">
+          <tabel>
+            <tr>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Gender</th>
+              <th>Country</th>
+            </tr>
+            <tr>
+              <td>{name}</td>
+              <td>{age}</td>
+              <td>{gender}</td>
+              <td>
+                {nationality.map((obj) => {
+                  return (
+                    <>
+                      {obj.country_id}
+                      <img
+                        src={`https://flagcdn.com/16x12/${obj.country_id.toLowerCase()}.png`}
+                        alt="flag"
+                      />
+                      ,&nbsp;
+                    </>
+                  );
+                })}
+              </td>
+            </tr>
+          </tabel>
+        </Grid>
       </Grid>
     </>
   );
